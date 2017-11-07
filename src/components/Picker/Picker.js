@@ -15,7 +15,10 @@ function Picker(props) {
           onRowRemoval={props.onRowRemoval}
         />
         <p>
-          <button className="Picker-button">
+          <button
+            className="Picker-button"
+            onClick={props.onWinnerPick}
+          >
             Pick a Winner
           </button>
         </p>

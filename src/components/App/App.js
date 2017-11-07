@@ -26,6 +26,10 @@ class App extends React.Component {
     this.setState({ rows: newRows });
   }
 
+  handleWinnerPick = () => {
+    this.setState({ winner: pickWinner(this.state.rows) });
+  }
+
   render() {
     return (
       <div className="App">
@@ -50,10 +54,29 @@ class App extends React.Component {
           onValueChange={this.handleValueChange}
           onRowAddition={this.handleRowAddition}
           onRowRemoval={this.handleRowRemoval}
+          onWinnerPick={this.handleWinnerPick}
         />
       </div>
     );
   }
+}
+
+/**
+ * Builds a bucket of items in proportion to their `total` and randomely picks a
+ * winner out of that bucket.
+ * @param  {Array} rows List of rows
+ * @return {String}     Name of the winner
+ */
+function pickWinner(rows) {
+  const bucket = rows.reduce((bucket, row) => {
+    const total = parseInt(row.total, 10);
+    for (var i = 0; i < total; i++) {
+      bucket.push(row.name);
+    }
+    return bucket;
+  }, []);
+  const randomIndex = Math.floor(Math.random() * (bucket.length - 1));
+  return bucket[randomIndex];
 }
 
 export default App;
