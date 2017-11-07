@@ -19,6 +19,8 @@ function PickerTableRow(props) {
           key={cell.id}
           value={props.row[cell.id]}
           cell={cell}
+          rowIndex={props.index}
+          onValueChange={props.onValueChange}
         />
       ))}
       <td>

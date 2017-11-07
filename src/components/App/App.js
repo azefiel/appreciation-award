@@ -9,6 +9,12 @@ class App extends React.Component {
     this.state = { rows: [{ ...emptyRow }] };
   }
 
+  handleValueChange = (index, type, value) => {
+    let newRows = [...this.state.rows];
+    newRows[index][type] = value;
+    this.setState({ rows: newRows });
+  }
+
   render() {
     return (
       <div className="App">
@@ -24,7 +30,10 @@ class App extends React.Component {
           <br />
           Now just click the button and a winner will be picked automatically!
         </p>
-        <Picker rows={this.state.rows} />
+        <Picker
+          rows={this.state.rows}
+          onValueChange={this.handleValueChange}
+        />
       </div>
     );
   }

@@ -4,7 +4,7 @@ import PickerTable from './PickerTable';
 function Picker(props) {
   return (
     <div className="Picker">
-      <PickerTable rows={props.rows} />
+      <PickerTable {...props} />
       <p>
         <button className="Picker-button">
           Pick a Winner

@@ -19,6 +19,8 @@ function PickerTable(props) {
               key={index}
               row={row}
               isOnlyRow={isOnlyRow}
+              index={index}
+              onValueChange={props.onValueChange}
             />
           ))}
           <tr>
