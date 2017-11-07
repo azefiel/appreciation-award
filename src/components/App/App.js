@@ -15,6 +15,11 @@ class App extends React.Component {
     this.setState({ rows: newRows });
   }
 
+  handleRowAddition = () => {
+    const newRows = [...this.state.rows, { ...emptyRow }];
+    this.setState({ rows: newRows });
+  }
+
   render() {
     return (
       <div className="App">
@@ -33,6 +38,7 @@ class App extends React.Component {
         <Picker
           rows={this.state.rows}
           onValueChange={this.handleValueChange}
+          onRowAddition={this.handleRowAddition}
         />
       </div>
     );

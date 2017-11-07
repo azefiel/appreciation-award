@@ -1,11 +1,16 @@
 import React from 'react';
 import PickerTableRow from './PickerTableRow';
 
-function PickerTable(props) {
-  const isOnlyRow = props.rows.length === 1;
+class PickerTable extends React.Component {
+  handleRowAddition = () => {
+    this.props.onRowAddition();
+  }
 
-  return (
-    <table className="PickerTable">
+  render() {
+    const isOnlyRow = this.props.rows.length === 1;
+
+    return (
+      <table className="PickerTable">
         <thead>
           <tr>
             <th>Name</th>
@@ -14,23 +19,24 @@ function PickerTable(props) {
           </tr>
         </thead>
         <tbody>
-          {props.rows.map((row, index) => (
+          {this.props.rows.map((row, index) => (
             <PickerTableRow
               key={index}
               row={row}
               isOnlyRow={isOnlyRow}
               index={index}
-              onValueChange={props.onValueChange}
+              onValueChange={this.props.onValueChange}
             />
           ))}
           <tr>
             <td>
-              <button>+</button>
+              <button onClick={this.handleRowAddition}>+</button>
             </td>
           </tr>
         </tbody>
       </table>
-  );
+    );
+  }
 }
 
 export default PickerTable;
