@@ -1,4 +1,5 @@
 import React from 'react';
+import './PickerWinner.css';
 
 function PickerWinner(props) {
   const month = new Date().toLocaleString('en-US', { month: 'long' });

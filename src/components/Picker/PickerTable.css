@@ -1,0 +1,12 @@
+.PickerTable td {
+  text-align: left;
+}
+
+.PickerTable input {
+  text-align: center;
+  color: #17a2b8;
+}
+
+.PickerTable input[type="number"] {
+  width: 5.5em;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import PickerTable from './PickerTable';
 import PickerWinner from './PickerWinner';
+import './Picker.css';
 
 function Picker(props) {
   return (

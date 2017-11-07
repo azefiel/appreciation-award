@@ -1,5 +1,6 @@
 import React from 'react';
 import Picker from '../Picker/Picker';
+import './App.css';
 
 class App extends React.Component {
   emptyRow = { name: '', total: '' }

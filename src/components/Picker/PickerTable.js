@@ -1,5 +1,6 @@
 import React from 'react';
 import PickerTableRow from './PickerTableRow';
+import './PickerTable.css';
 
 function PickerTable(props) {
   const isOnlyRow = props.rows.length === 1;
