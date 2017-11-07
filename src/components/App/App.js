@@ -20,6 +20,12 @@ class App extends React.Component {
     this.setState({ rows: newRows });
   }
 
+  handleRowRemoval = index => {
+    let newRows = [...this.state.rows];
+    newRows.splice(index, 1);
+    this.setState({ rows: newRows });
+  }
+
   render() {
     return (
       <div className="App">
@@ -39,6 +45,7 @@ class App extends React.Component {
           rows={this.state.rows}
           onValueChange={this.handleValueChange}
           onRowAddition={this.handleRowAddition}
+          onRowRemoval={this.handleRowRemoval}
         />
       </div>
     );

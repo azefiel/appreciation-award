@@ -26,6 +26,7 @@ class PickerTable extends React.Component {
               isOnlyRow={isOnlyRow}
               index={index}
               onValueChange={this.props.onValueChange}
+              onRowRemoval={this.props.onRowRemoval}
             />
           ))}
           <tr>
