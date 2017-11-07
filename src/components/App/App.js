@@ -1,4 +1,5 @@
 import React from 'react';
+import random from 'lodash.random';
 import Picker from '../Picker/Picker';
 import './App.css';
 
@@ -76,7 +77,7 @@ function pickWinner(rows) {
     }
     return bucket;
   }, []);
-  const randomIndex = Math.floor(Math.random() * (bucket.length - 1));
+  const randomIndex = random(bucket.length - 1);
   return bucket[randomIndex];
 }
 
