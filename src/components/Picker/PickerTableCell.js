@@ -1,7 +1,14 @@
 import React from 'react';
 
-function PickerTableCell() {
-  return <div />;
+function PickerTableCell(props) {
+  return (
+    <td>
+      <input
+        value={props.value}
+        {...props.cell}
+      />
+    </td>
+  );
 }
 
 export default PickerTableCell;
