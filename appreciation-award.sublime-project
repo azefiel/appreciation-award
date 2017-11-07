@@ -1,0 +1,26 @@
+{
+  "folders":
+  [
+    {
+      "folder_exclude_patterns":
+      [
+        "node_modules"
+      ],
+      "path": "."
+    }
+  ],
+  "settings":
+  {
+    "color_scheme": "Packages/Oceanic Next Color Scheme/Oceanic Next.tmTheme",
+    "rulers":
+    [
+      80
+    ],
+    "tab_size": 2,
+    "translate_tabs_to_spaces": true
+  },
+  "syntax_override":
+  {
+    "\\.js$": ["Babel", "JavaScript (Babel)"]
+  }
+}
