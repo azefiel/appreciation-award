@@ -20,25 +20,26 @@ const expectedBucket = [
 ];
 
 test('unpack rows correctly', () => {
-  const result = pickWinner(rows);
-  expect(result.bucket).toEqual(expectedBucket);
+  const bucket = pickWinner(rows).bucket;
+  expect(bucket).toEqual(expectedBucket);
 });
 
 test('random index in range', () => {
+  const max = Math.pow(expectedBucket.length, 3);
   const randomIndexes = [];
 
-  for (var i = 0; i < 1000; i++) {
-    const result = pickWinner(rows);
+  for (var i = 0; i < max; i++) {
+    const randomIndex = pickWinner(rows).randomIndex;
 
-    if (randomIndexes.indexOf(result.randomIndex + 1) < 0) {
-      randomIndexes.push(result.randomIndex + 1);
+    if (randomIndexes.indexOf(randomIndex) < 0) {
+      randomIndexes.push(randomIndex);
     }
   }
 
-  const randomIndexesSum = randomIndexes.reduce((sum, value) => sum + value, 0);
-  const expectedBucketSum = expectedBucket.reduce((sum, value, index) =>
-    sum + index + 1
-  , 0);
+  const randomIndexesSorted = [...randomIndexes].sort();
+  const expectedBucketSorted = expectedBucket
+    .map((value, index) => index)
+    .sort();
 
-  expect(randomIndexesSum).toEqual(expectedBucketSum);
+  expect(randomIndexesSorted).toEqual(expectedBucketSorted);
 });
