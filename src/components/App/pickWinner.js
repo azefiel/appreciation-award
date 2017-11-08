@@ -3,6 +3,7 @@ import random from 'lodash.random';
 /**
  * Generates a bucket of items proportionally to their `total` and
  * randomely picks an item out of that bucket.
+ * `bucket` and `randomIndex` are exposed for testing purposes.
  * @param  {Array} rows List of rows
  * @return {String}     Name of the winner
  */
@@ -15,7 +16,11 @@ function pickWinner(rows) {
     return bucket;
   }, []);
   const randomIndex = random(bucket.length - 1);
-  return bucket[randomIndex];
+  return {
+    winner: bucket[randomIndex],
+    bucket: bucket,
+    randomIndex: randomIndex
+  };
 }
 
 export default pickWinner;
