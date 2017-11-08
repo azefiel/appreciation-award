@@ -1,13 +1,12 @@
 import React from 'react';
-import random from 'lodash.random';
+import pickWinner from './pickWinner';
 import Picker from '../Picker/Picker';
 import './App.css';
 
 class App extends React.Component {
-  emptyRow = { name: '', total: '' }
-
   constructor(props) {
     super(props);
+    this.emptyRow = { name: '', total: '' };
     this.state = { winner:'', rows: [{ ...this.emptyRow }] };
   }
 
@@ -61,24 +60,6 @@ class App extends React.Component {
       </div>
     );
   }
-}
-
-/**
- * Builds a bucket of items in proportion to their `total` and randomely picks a
- * winner out of that bucket.
- * @param  {Array} rows List of rows
- * @return {String}     Name of the winner
- */
-function pickWinner(rows) {
-  const bucket = rows.reduce((bucket, row) => {
-    const total = parseInt(row.total, 10);
-    for (var i = 0; i < total; i++) {
-      bucket.push(row.name);
-    }
-    return bucket;
-  }, []);
-  const randomIndex = random(bucket.length - 1);
-  return bucket[randomIndex];
 }
 
 export default App;
