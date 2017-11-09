@@ -1,7 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import PickerTableCell from './PickerTableCell';
 
 class PickerTableRow extends React.Component {
+  static propTypes = {
+    row: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      total: PropTypes.string.isRequired
+    }),
+    isOnlyRow: PropTypes.bool.isRequired,
+    index: PropTypes.number.isRequired,
+    onValueChange: PropTypes.func.isRequired,
+    onRowRemoval: PropTypes.func.isRequired
+  };
+
   cellsSpec = [{
     id: 'name',
     type: 'text',
@@ -10,7 +22,7 @@ class PickerTableRow extends React.Component {
     id: 'total',
     type: 'number',
     placeholder: '0'
-  }]
+  }];
 
   handleRowRemoval = () => {
     this.props.onRowRemoval(this.props.index);

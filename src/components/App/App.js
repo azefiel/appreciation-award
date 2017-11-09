@@ -4,11 +4,8 @@ import Picker from '../Picker/Picker';
 import './App.css';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.emptyRow = { name: '', total: '' };
-    this.state = { winner:'', rows: [{ ...this.emptyRow }] };
-  }
+  emptyRow = { name: '', total: '' };
+  state = { winner:'', rows: [{...this.emptyRow}] };
 
   handleValueChange = (index, type, value) => {
     let newRows = [...this.state.rows];
@@ -17,7 +14,7 @@ class App extends React.Component {
   }
 
   handleRowAddition = () => {
-    const newRows = [...this.state.rows, { ...this.emptyRow }];
+    const newRows = [...this.state.rows, {...this.emptyRow}];
     this.setState({ rows: newRows });
   }
 
