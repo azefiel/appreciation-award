@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class PickerTableCell extends React.Component {
+class PickerTableInput extends React.Component {
   static propTypes = {
     value: PropTypes.string.isRequired,
-    cell: PropTypes.shape({
+    input: PropTypes.shape({
       id: PropTypes.string.isRequired,
       type: PropTypes.string.isRequired,
       placeholder: PropTypes.string.isRequired
@@ -16,7 +16,7 @@ class PickerTableCell extends React.Component {
   handleChange = event => {
     this.props.onValueChange(
       this.props.rowIndex,
-      this.props.cell.id,
+      this.props.input.id,
       event.target.value
     );
   }
@@ -26,7 +26,7 @@ class PickerTableCell extends React.Component {
       <td>
         <input
           value={this.props.value}
-          {...this.props.cell}
+          {...this.props.input}
           onChange={this.handleChange}
         />
       </td>
@@ -34,4 +34,4 @@ class PickerTableCell extends React.Component {
   }
 }
 
-export default PickerTableCell;
+export default PickerTableInput;

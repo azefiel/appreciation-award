@@ -14,7 +14,7 @@ class PickerTable extends React.Component {
     onRowRemoval: PropTypes.func.isRequired
   };
 
-  handleRowAddition = () => {
+  handleClick = () => {
     this.props.onRowAddition();
   }
 
@@ -43,7 +43,7 @@ class PickerTable extends React.Component {
           ))}
           <tr>
             <td>
-              <button onClick={this.handleRowAddition}>+</button>
+              <button onClick={this.handleClick}>+</button>
             </td>
           </tr>
         </tbody>

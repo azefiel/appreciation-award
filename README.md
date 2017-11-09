@@ -40,7 +40,7 @@ Launch development build
 yarn start
 ```
 
-Will start the development server and serve the app at `http://localhost:3000/`
+The development server will start and serve the app at `http://localhost:3000/`
 
 ## Running the tests
 
@@ -67,7 +67,7 @@ unpackRowsCorrectly(input);
 
 ### random index in range
 
-Generate `Math.pow(output.length, 3)` random indexes and check if the result matches at least once each index of the unpacked output.
+Generate `Math.pow(input.length, 3)` random indexes and check if the result matches at least once each index of the input.
 
 ```javascript
 const input = ['paul', 'paul', 'paul', 'henri', 'henri', 'mathieu'];
@@ -90,7 +90,7 @@ Serve the `build` folder with a static server
 serve -s build
 ```
 
-Will start the production server and serve the app at `http://localhost:5000/`
+The production server will start and serve the app at `http://localhost:5000/`
 
 ## Built With
 

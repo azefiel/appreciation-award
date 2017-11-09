@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import PickerTableCell from './PickerTableCell';
+import PickerTableInput from './PickerTableInput';
 
 class PickerTableRow extends React.Component {
   static propTypes = {
@@ -14,7 +14,7 @@ class PickerTableRow extends React.Component {
     onRowRemoval: PropTypes.func.isRequired
   };
 
-  cellsSpec = [{
+  inputsSpec = [{
     id: 'name',
     type: 'text',
     placeholder: 'Waldo'
@@ -24,18 +24,18 @@ class PickerTableRow extends React.Component {
     placeholder: '0'
   }];
 
-  handleRowRemoval = () => {
+  handleClick = () => {
     this.props.onRowRemoval(this.props.index);
   }
 
   render() {
     return (
       <tr>
-        {this.cellsSpec.map(cell => (
-          <PickerTableCell
-            key={cell.id}
-            value={this.props.row[cell.id]}
-            cell={cell}
+        {this.inputsSpec.map(input => (
+          <PickerTableInput
+            key={input.id}
+            value={this.props.row[input.id]}
+            input={input}
             rowIndex={this.props.index}
             onValueChange={this.props.onValueChange}
           />
@@ -43,7 +43,7 @@ class PickerTableRow extends React.Component {
         <td>
           {this.props.isOnlyRow ?
             null :
-            <button onClick={this.handleRowRemoval}>x</button>
+            <button onClick={this.handleClick}>x</button>
           }
         </td>
       </tr>

@@ -5,7 +5,7 @@ import './App.css';
 
 class App extends React.Component {
   emptyRow = { name: '', total: '' };
-  state = { winner:'', rows: [{...this.emptyRow}] };
+  state = { winner: '', rows: [{...this.emptyRow}] };
 
   handleValueChange = (index, type, value) => {
     let newRows = [...this.state.rows];

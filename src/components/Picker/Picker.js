@@ -17,6 +17,10 @@ class Picker extends React.Component {
     onWinnerPick: PropTypes.func.isRequired
   };
 
+  handleClick = () => {
+    this.props.onWinnerPick();
+  }
+
   render() {
     return (
       <div className="Picker">
@@ -32,7 +36,7 @@ class Picker extends React.Component {
           <p>
             <button
               className="Picker-button"
-              onClick={this.props.onWinnerPick}
+              onClick={this.handleClick}
             >
               Pick a Winner
             </button>
