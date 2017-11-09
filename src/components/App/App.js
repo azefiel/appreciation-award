@@ -25,7 +25,7 @@ class App extends React.Component {
   }
 
   handleWinnerPick = () => {
-    this.setState({ winner: pickWinner(this.state.rows).winner });
+    this.setState({ winner: pickWinner(this.state.rows) });
   }
 
   render() {

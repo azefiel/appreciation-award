@@ -3,24 +3,25 @@ import random from 'lodash.random';
 /**
  * Generates a bucket of items proportionally to their `total` and
  * randomely picks an item out of that bucket.
- * `bucket` and `randomIndex` are exposed for testing purposes.
  * @param  {Array} rows List of rows
  * @return {String}     Name of the winner
  */
-function pickWinner(rows) {
-  const bucket = rows.reduce((bucket, row) => {
-    const total = parseInt(row.total, 10);
-    for (var i = 0; i < total; i++) {
-      bucket.push(row.name);
+export default function pickWinner(rows) {
+  const bucket = createBucket(rows);
+  const index = generateRandomIndex(bucket.length);
+  return bucket[index];
+}
+
+export function createBucket(items) {
+  return items.reduce((bucket, item) => {
+    const upper = parseInt(item.total, 10);
+    for (let i = 0; i < upper; i++) {
+      bucket.push(item.name);
     }
     return bucket;
   }, []);
-  const randomIndex = random(bucket.length - 1);
-  return {
-    winner: bucket[randomIndex],
-    bucket: bucket,
-    randomIndex: randomIndex
-  };
 }
 
-export default pickWinner;
+export function generateRandomIndex(length) {
+  return random(length - 1);
+}

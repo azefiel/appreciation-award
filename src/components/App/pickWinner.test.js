@@ -1,45 +1,29 @@
-import pickWinner from './pickWinner';
+import pickWinner, { createBucket, generateRandomIndex } from './pickWinner';
 
-const rows = [{
-  name: 'paul',
-  total: 3
-},{
-  name: 'henri',
-  total: 2
-},{
-  name: 'mathieu',
-  total: 1
-}];
-const expectedBucket = [
-  'paul',
-  'paul',
-  'paul',
-  'henri',
-  'henri',
-  'mathieu'
+const rows = [
+  { name: 'paul', total: 3 },
+  { name: 'henri', total: 2 },
+  { name: 'jacques', total: 1 }
 ];
+const expectedBucket = ['paul', 'paul', 'paul', 'henri', 'henri', 'jacques'];
+const expectedIndexes = [0, 1, 2, 3, 4, 5];
 
 test('unpack rows correctly', () => {
-  const bucket = pickWinner(rows).bucket;
+  const bucket = createBucket(rows);
   expect(bucket).toEqual(expectedBucket);
 });
 
 test('random index in range', () => {
-  const max = Math.pow(expectedBucket.length, 3);
-  const randomIndexes = [];
-
-  for (var i = 0; i < max; i++) {
-    const randomIndex = pickWinner(rows).randomIndex;
-
-    if (randomIndexes.indexOf(randomIndex) < 0) {
-      randomIndexes.push(randomIndex);
-    }
-  }
-
-  const randomIndexesSorted = [...randomIndexes].sort();
-  const expectedBucketSorted = expectedBucket
-    .map((value, index) => index)
+  const expectedBucketLength = expectedBucket.length;
+  const count = Math.pow(expectedBucketLength, 3);
+  const randomIndexes = Array(count)
+    .fill()
+    .reduce((array) => {
+      const index = generateRandomIndex(expectedBucketLength);
+      !array.includes(index) && array.push(index);
+      return array;
+    }, [])
     .sort();
 
-  expect(randomIndexesSorted).toEqual(expectedBucketSorted);
+  expect(randomIndexes).toEqual(expectedIndexes);
 });
