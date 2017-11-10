@@ -21,6 +21,10 @@ class PickerTableInput extends React.Component {
     );
   }
 
+  componentDidMount = () => {
+    this.props.input.id === 'name' && this.elementInput.focus();
+  }
+
   render() {
     return (
       <td>
@@ -28,6 +32,7 @@ class PickerTableInput extends React.Component {
           value={this.props.value}
           {...this.props.input}
           onChange={this.handleChange}
+          ref={element => this.elementInput = element}
         />
       </td>
     );

@@ -14,15 +14,10 @@ class PickerTableRow extends React.Component {
     onRowRemoval: PropTypes.func.isRequired
   };
 
-  inputsSpec = [{
-    id: 'name',
-    type: 'text',
-    placeholder: 'Waldo'
-  }, {
-    id: 'total',
-    type: 'number',
-    placeholder: '0'
-  }];
+  inputSpec = [
+    { id: 'name', type: 'text', placeholder: 'Waldo' },
+    { id: 'total', type: 'number', placeholder: '0' }
+  ];
 
   handleClick = () => {
     this.props.onRowRemoval(this.props.index);
