@@ -22,10 +22,15 @@ class Picker extends React.Component {
   }
 
   render() {
+    const hasOneRowFilled = this.props.rows.reduce((truth, row) => {
+      return truth ? truth : row.name && row.total;
+    }, false);
+
     return (
       <div className="Picker">
-      {this.props.winner ?
-        <PickerWinner name={this.props.winner} /> : (
+      {this.props.winner ? (
+        <PickerWinner name={this.props.winner} />
+      ) : (
         <div>
           <PickerTable
             rows={this.props.rows}
@@ -33,6 +38,7 @@ class Picker extends React.Component {
             onRowAddition={this.props.onRowAddition}
             onRowRemoval={this.props.onRowRemoval}
           />
+        {hasOneRowFilled && (
           <p>
             <button
               className="Picker-button"
@@ -41,6 +47,7 @@ class Picker extends React.Component {
               Pick a Winner
             </button>
           </p>
+        )}
         </div>
       )}
       </div>

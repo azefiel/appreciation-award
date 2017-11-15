@@ -19,7 +19,7 @@ class PickerTable extends React.Component {
   }
 
   render () {
-    const isOnlyRow = this.props.rows.length === 1;
+    const isNotOnlyRow = this.props.rows.length > 1;
 
     return (
       <table className="PickerTable">
@@ -35,7 +35,7 @@ class PickerTable extends React.Component {
             <PickerTableRow
               key={index}
               row={row}
-              isOnlyRow={isOnlyRow}
+              isNotOnlyRow={isNotOnlyRow}
               index={index}
               onValueChange={this.props.onValueChange}
               onRowRemoval={this.props.onRowRemoval}

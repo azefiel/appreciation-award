@@ -8,13 +8,13 @@ class PickerTableRow extends React.Component {
       name: PropTypes.string.isRequired,
       total: PropTypes.string.isRequired
     }),
-    isOnlyRow: PropTypes.bool.isRequired,
+    isNotOnlyRow: PropTypes.bool.isRequired,
     index: PropTypes.number.isRequired,
     onValueChange: PropTypes.func.isRequired,
     onRowRemoval: PropTypes.func.isRequired
   };
 
-  inputSpec = [
+  inputsSpec = [
     { id: 'name', type: 'text', placeholder: 'Waldo' },
     { id: 'total', type: 'number', placeholder: '0' }
   ];
@@ -36,10 +36,9 @@ class PickerTableRow extends React.Component {
           />
         ))}
         <td>
-          {this.props.isOnlyRow ?
-            null :
+          {this.props.isNotOnlyRow && (
             <button onClick={this.handleClick}>x</button>
-          }
+          )}
         </td>
       </tr>
     );

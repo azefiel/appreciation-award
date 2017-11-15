@@ -1,4 +1,4 @@
-import pickWinner, { createBucket, generateRandomIndex } from './pickWinner';
+import pickWinner, { createBucket, randomIndex } from './pickWinner';
 
 const rows = [
   { name: 'paul', total: 3 },
@@ -14,12 +14,11 @@ test('unpack rows correctly', () => {
 });
 
 test('random index in range', () => {
-  const expectedBucketLength = expectedBucket.length;
-  const count = Math.pow(expectedBucketLength, 3);
-  const randomIndexes = Array(count)
+  const iterator = Math.pow(expectedBucket.length, 3);
+  const randomIndexes = Array(iterator)
     .fill()
-    .reduce((array) => {
-      const index = generateRandomIndex(expectedBucketLength);
+    .reduce(array => {
+      const index = randomIndex(expectedBucket);
       !array.includes(index) && array.push(index);
       return array;
     }, [])

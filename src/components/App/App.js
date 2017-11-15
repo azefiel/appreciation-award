@@ -36,8 +36,7 @@ class App extends React.Component {
             Appreciation Award
           </h1>
         </header>
-        {this.state.winner ?
-          null :
+        {!this.state.winner && (
           <p className="App-info">
             This app will help you pick a winner for the Appreciation Award.
             <br />
@@ -45,7 +44,7 @@ class App extends React.Component {
             <br />
             Now just click the button and a winner will be picked automatically!
           </p>
-        }
+        )}
         <Picker
           rows={this.state.rows}
           winner={this.state.winner}

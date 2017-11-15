@@ -8,7 +8,7 @@ import random from 'lodash.random';
  */
 export default function pickWinner(rows) {
   const bucket = createBucket(rows);
-  const index = generateRandomIndex(bucket.length);
+  const index = randomIndex(bucket);
   return bucket[index];
 }
 
@@ -22,6 +22,6 @@ export function createBucket(items) {
   }, []);
 }
 
-export function generateRandomIndex(length) {
-  return random(length - 1);
+export function randomIndex(array) {
+  return random(array.length ? array.length - 1 : 0);
 }
